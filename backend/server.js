@@ -1,10 +1,13 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
 const todoRoutes = require("./routes/todos");
 
 require("dotenv").config();
 
 const app = express();
 
+// middleware
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -12,8 +15,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// routes
 app.use("/api/todos", todoRoutes);
 
-app.listen(process.env.PORT, () => {
-  console.log("listening on port", process.env.PORT);
-});
+// connect database
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log("connected to db & listening on port", process.env.PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err)
+  });
