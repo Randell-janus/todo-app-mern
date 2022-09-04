@@ -3,7 +3,7 @@ const Todo = require("../models/todoModel");
 
 // get all todos
 const getTodos = async (req, res) => {
-  const todos = await Todo.find({}).sort({ createdAt: -1 });
+  const todos = await Todo.find({}).sort({ updatedAt: -1 });
 
   res.status(200).json(todos);
 };
@@ -27,11 +27,11 @@ const getTodo = async (req, res) => {
 
 // create new todo
 const createTodo = async (req, res) => {
-  const { body, duration } = req.body;
+  const { body, duration, isCompleted } = req.body;
 
   // add document to db
   try {
-    const todo = await Todo.create({ body, duration });
+    const todo = await Todo.create({ body, duration, isCompleted });
     res.status(200).json(todo);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -77,5 +77,5 @@ module.exports = {
   getTodo,
   createTodo,
   deleteTodo,
-  editTodo
+  editTodo,
 };

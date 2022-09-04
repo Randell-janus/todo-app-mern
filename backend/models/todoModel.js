@@ -12,6 +12,10 @@ const todoSchema = new Schema(
       type: Number,
       required: true,
     },
+    isCompleted: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true }
 );

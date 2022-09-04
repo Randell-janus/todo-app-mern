@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@layer base {
+  body {
+    @apply text-xs sm:text-sm;
+    @apply font-poppins font-light;
+  }
+
+  h1 {
+    @apply text-lg sm:text-xl font-semibold;
+  }
+
+  h2 {
+    @apply text-base sm:text-lg font-medium;
+  }
+
+  h3 {
+    @apply text-sm sm:text-base;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply py-16 lg:py-24 px-8 min-h-screen max-w-6xl mx-auto space-y-8;
+  }
+
+  .btn-primary {
+    @apply bg-teal-400 hover:bg-teal-300 font-medium text-white px-5 py-2 rounded-md;
+    @apply active:scale-90 transition-all;
+  }
+
+  .input-primary {
+    @apply bg-slate-100 rounded-md focus:outline-none w-full py-2 px-4;
+    @apply focus:border-teal-400 focus:border-2 border-2 border-transparent;
+  }
+
+  .scrollbar-none {
+    @apply overflow-scrollbar-none;
+  }
+}
+
+@layer utilities {
+  .homepage-container {
+    @apply flex flex-col-reverse space-y-reverse md:flex-row space-x-0 md:space-x-8 space-y-8 md:space-y-0;
+  }
+
+  .todolist-container {
+    @apply w-full md:w-2/3 h-[30.5rem] overflow-auto scrollbar-none;
+    @apply md:border-r md:pr-8 border-t pt-8 md:border-t-0 md:pt-0;
+  }
+
+  .overflow-scrollbar-none::-webkit-scrollbar {
+    @apply w-0;
+  }
+}
