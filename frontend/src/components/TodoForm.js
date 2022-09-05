@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { createTodo, getTodos } from "../features/todos/todosSlice";
+import { createTodo } from "../features/todos/todosSlice";
 
 const TodoForm = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,7 @@ const TodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createTodo({ ...todo, isCompleted: false }));
-    // dispatch(getTodos());
+    dispatch(createTodo(todo));
   };
 
   return (
@@ -38,6 +37,7 @@ const TodoForm = () => {
           name="body"
           className="input-primary"
           placeholder="study math"
+          required
         />
       </div>
 
@@ -50,6 +50,7 @@ const TodoForm = () => {
           min="1"
           className="input-primary"
           placeholder="hours"
+          required
         />
       </div>
       <div className="flex justify-end sm:block">

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const todoRoutes = require("./routes/todos");
 
@@ -8,6 +9,8 @@ require("dotenv").config();
 const app = express();
 
 // middleware
+app.use(cors());
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -27,5 +30,5 @@ mongoose
     });
   })
   .catch((err) => {
-    console.log(err)
+    console.log(err);
   });

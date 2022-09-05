@@ -37,6 +37,11 @@
     @apply active:scale-90 transition-all;
   }
 
+  .btn-secondary {
+    @apply border text-slate-600 hover:border-black px-5 py-2 rounded-md;
+    @apply active:scale-90 transition-all;
+  }
+
   .input-primary {
     @apply bg-slate-100 rounded-md focus:outline-none w-full py-2 px-4;
     @apply focus:border-teal-400 focus:border-2 border-2 border-transparent;
