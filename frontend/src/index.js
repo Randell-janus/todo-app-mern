@@ -3,16 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
-import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
-import todosReducer from "./features/todos/todosSlice";
-
-const store = configureStore({
-  reducer: {
-    todos: todosReducer,
-  },
-});
+import store from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

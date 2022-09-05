@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { formatDate, formatTime } from "../utils/helpers";
