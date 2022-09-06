@@ -12,7 +12,15 @@ export default function EditModal({ isOpen, onClose, todo }) {
   const handleEdit = (e) => {
     e.preventDefault();
 
+    if (!body || !duration || duration < 1) return;
+
+    if (body === todo.body && parseInt(duration) === todo.duration) {
+      onClose();
+      return;
+    }
+
     dispatch(editTodo({ _id: todo._id, body, duration }));
+    onClose();
   };
 
   useEffect(() => {
@@ -62,6 +70,7 @@ export default function EditModal({ isOpen, onClose, todo }) {
                         name="body"
                         className="input-primary"
                         value={body}
+                        required
                       />
                     </div>
 
@@ -74,6 +83,7 @@ export default function EditModal({ isOpen, onClose, todo }) {
                         min="1"
                         className="input-primary"
                         value={duration}
+                        required
                       />
                     </div>
 

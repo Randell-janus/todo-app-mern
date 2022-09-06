@@ -18,10 +18,17 @@ const TodoForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!todo.body || !todo.duration || todo.duration < 1) return;
+
     dispatch(createTodo(todo));
+
+    setTodo({
+      body: "",
+      duration: 1,
+    });
   };
 
   return (
@@ -38,6 +45,7 @@ const TodoForm = () => {
           className="input-primary"
           placeholder="study math"
           required
+          value={todo.body}
         />
       </div>
 
@@ -51,6 +59,7 @@ const TodoForm = () => {
           className="input-primary"
           placeholder="hours"
           required
+          value={todo.duration}
         />
       </div>
       <div className="flex justify-end sm:block">
