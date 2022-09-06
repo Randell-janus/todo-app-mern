@@ -6,17 +6,26 @@ async function populateDB() {
   await mongoose.connect(process.env.MONGO_URI);
   await Todo.insertMany([
     {
-      body: "meet with friends",
+      body: "Meet with friends",
       duration: 3,
     },
     {
-      body: "play some games",
+      body: "Play some games",
       duration: 2,
     },
     {
-      body: "make iced coffee",
-      duration: 1,
+      body: "Go to the gym",
+      duration: 4,
+    },
+    {
+      body: "Go to church",
+      duration: 2,
+    },
+    {
+      body: "Watch a movie",
+      duration: 3,
     },
   ]);
 }
+
 populateDB();
