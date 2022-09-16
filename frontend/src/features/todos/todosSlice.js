@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// mern backend
 const baseURL = "http://localhost:4000";
+
+// django rest backend
+// const baseURL = "http://127.0.0.1:8000";
 
 const initialState = {
   todos: [],
@@ -52,14 +56,17 @@ export const editTodo = createAsyncThunk("todos/editTodo", async (todo) => {
   }
 });
 
-export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (id) => {
+export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (todo) => {
   try {
-    const res = await fetch(`${baseURL}/api/todos/${id}`, {
+    const res = await fetch(`${baseURL}/api/todos/${todo._id}`, {
       method: "DELETE",
     });
-    const data = await res.json();
 
-    return data;
+    if (res.status === 200) return todo
+
+    // NOT ALL APIS RETURN BACK THE DELETED OBJECT AS RESPONSE
+    // const data = await res.json();
+    // return data;
   } catch (err) {
     return err.message;
   }

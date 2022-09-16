@@ -13,7 +13,7 @@ const TodoList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState("");
 
-  const handleDelete = (id) => dispatch(deleteTodo(id));
+  const handleDelete = (todo) => dispatch(deleteTodo(todo));
 
   const openModal = (todo) => {
     setSelectedTodo(todo);
@@ -41,7 +41,7 @@ const TodoList = () => {
               <PencilIcon />
             </button>
 
-            <button onClick={() => handleDelete(todo._id)}>
+            <button onClick={() => handleDelete(todo)}>
               <TrashIcon />
             </button>
           </div>
