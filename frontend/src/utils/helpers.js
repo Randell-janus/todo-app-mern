@@ -33,3 +33,13 @@ export const formatTime = (timestamp) => {
     hour12: true,
   });
 };
+
+export const formatWithSeconds = (timestamp) => {
+  const initialDate = new Date(timestamp);
+  return initialDate.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  });
+};

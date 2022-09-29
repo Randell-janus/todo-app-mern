@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { deleteTodo } from "../features/todos/todosSlice";
-import { formatDate, formatTime } from "../utils/helpers";
+import { formatDate, formatTime, formatWithSeconds } from "../utils/helpers";
 import { TrashIcon, PencilIcon } from "./Icons";
 import EditModal from "./EditModal";
 
@@ -53,7 +53,10 @@ const TodoList = () => {
           </p>
 
           <p className="mt-2 text-end text-slate-500">
-            {todo.createdAt !== todo.updatedAt ? "Updated" : "Posted at"}{" "}
+            {formatWithSeconds(todo.createdAt) !==
+            formatWithSeconds(todo.updatedAt)
+              ? "Updated"
+              : "Posted at"}{" "}
             {formatDate(todo.updatedAt)} - {formatTime(todo.updatedAt)}
           </p>
         </div>
